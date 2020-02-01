@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+
+{% block body %}
+    <title>Add Comment</title>
+
+    <p class="lead" >Add comment:</p> 
+
+    <form method="POST" >
+        {% csrf_token %}
+        <div class="form-group">
+            <label for="title">Enter comment: </label>
+            <textarea class="form-control" name="comment" id="title" rows="3"></textarea>
+        </div>
+        
+          <input type="submit" class="btn btn-success" >
+    </form>
+
+
+{% endblock %}

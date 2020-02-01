@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+
+{% block body %}
+
+    <title>Index</title>
+    <div class="jumbotron lead">
+       <h1> Welcome {{user.username}}</h1>
+     </div>
+
+
+    {%  if blogs %}
+    <h3>Blogs: </h3>
+    {% for blog in blogs %}
+    <div class="border border-dark" >
+    
+        <a style="font-size: 30px;" href="{% url 'blog:blog_detail' pk=blog.pk %}" class="lead" > {{blog.title}} </a>
+        <p class="lead" style=" height: 250px;overflow-y: auto;"> {{blog.blog}} </p>
+        {% if user.is_authenticated %}
+        
+        {% endif %}
+        <h4>Comments: {{blog.comments.count}}</h4>
+        </div>
+        <hr>
+    
+    {% endfor %}
+    {% else %}
+    <h2 >No Blogs Yet</h2>
+    <h3 class="lead" >Create Your <a href="{% url 'blog:createBlog' %}" >First Blog </a></h3>
+    {% endif %}
+    
+    
+
+    
+
+{% endblock %}

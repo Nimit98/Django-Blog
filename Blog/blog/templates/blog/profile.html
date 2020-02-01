@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+{% block body %}
+
+    <title>Profile</title>
+
+    <h1>Your blogs: </h1>
+    <hr>
+    {% for blog in user.user_create_blog.all %}
+    <li><a style="font-size: 35px;" href="{% url 'blog:blog_detail' pk=blog.pk %}" >{{blog.title}}</a></li>
+
+    {% endfor %}
+
+    <a href="{% url 'blog:createBlog' %}" class="btn btn-success" >Create Blogs</a>
+
+{% endblock %}

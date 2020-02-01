@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+{% block body %}
+    <title>Blog Detail</title>
+    <h1 > Author: {{blog_detail.user}} </h1>
+
+    <h2>{{blog_detail.title}}</h2>
+    <h3 class="blog_content lead" > {{blog_detail.blog}} </h3>
+    <h5>{{blog_detail.date}}</h5>
+    <hr>
+    
+
+    <h4>Comments: </h4>
+    {% for comment in blog_detail.comments.all %}
+        <p> {{comment.text}} <span class="float-right">~ {{comment.user}} </span>  </p>
+        <hr>
+    {% endfor %}
+
+    <a href="{% url 'blog:comment' pk=blog_detail.pk %}" class="btn btn-warning" >Comment</a>
+
+{% endblock %}

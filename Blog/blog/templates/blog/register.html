@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+
+{% block body %}
+
+    <title>Register</title>
+    {% if registered %}
+    <h2>Thanks For registering</h2>
+    {% else %}
+    <h2>Registration Form: </h2>
+    <form method="POST" class="form-group" >
+        {% csrf_token %}
+        {{user_form.as_p}}
+        {{usermodel_form.as_p}}
+        <input type="submit" value="Submit" />
+    </form>
+    {% endif %}
+
+{% endblock %}

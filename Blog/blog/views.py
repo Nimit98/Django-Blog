@@ -63,7 +63,8 @@ def user_login(request):
 
 @login_required
 def profile(request):
-    return render(request, 'profile.html')
+    blogs = CreateBlog.objects.all().filter(user=request.user)
+    return render(request, 'profile.html', {'blogs':blogs})
 
 @login_required
 def createBlog(request):

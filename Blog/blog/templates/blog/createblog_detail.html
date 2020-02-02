@@ -16,10 +16,10 @@
         <hr>
     {% endfor %}
 
-    {% if blog_detail.user == user %}
+    {% if blog_detail.user == user and user.is_authenticated %}
     <a href="{% url 'blog:update_blog' pk=blog_detail.pk %}" class="btn btn-success" >Update</a>
     <a href="{% url 'blog:delete_blog' pk=blog_detail.pk %}" class="btn btn-warning" >Remove</a>
-    {% else %}
+    {% elif user.is_authenticated %}
     <a href="{% url 'blog:comment' pk=blog_detail.pk %}" class="btn btn-warning" >Comment</a>
     {% endif %}
 

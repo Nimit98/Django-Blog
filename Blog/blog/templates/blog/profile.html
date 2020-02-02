@@ -3,6 +3,7 @@
 {% block body %}
 
     <title>Profile</title>
+    {% if blogs %}
 
     <h1>Your blogs: </h1>
     <hr>
@@ -10,6 +11,9 @@
     <li><a style="font-size: 35px;" href="{% url 'blog:blog_detail' pk=blog.pk %}" >{{blog.title}}</a></li>
 
     {% endfor %}
+    {% else %}
+    <h1>No blogs yet</h1>
+    {% endif %}
 
     <a href="{% url 'blog:createBlog' %}" class="btn btn-success" >Create Blogs</a>
 

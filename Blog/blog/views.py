@@ -2,11 +2,11 @@ from django.shortcuts import render
 from .forms import UserForm,CreateBlogForm
 from .models import CreateBlog, Comments
 from django.shortcuts import redirect
-from django.views.generic import ListView,DetailView,CreateView
+from django.views.generic import ListView,DetailView,CreateView,UpdateView,DeleteView
 
 from django.contrib.auth import authenticate,login,logout
 from django.http import HttpResponseRedirect, HttpResponse
-from django.urls import reverse
+from django.urls import reverse,reverse_lazy
 from django.contrib.auth.decorators import login_required
 
 # Create your views here.
@@ -99,5 +99,12 @@ def comment(request, pk):
     else:
         return render(request, 'comment.html')
 
+class UpdateBlogView(UpdateView):
+    model = CreateBlog
+    fields = ('title', 'blog',)
+
+class DeleteBlogView(DeleteView):
+    model = CreateBlog
+    success_url = reverse_lazy('index')
 
     

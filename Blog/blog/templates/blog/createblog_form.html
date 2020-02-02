@@ -3,8 +3,11 @@
 {% block body %}
 
 <title>Create Blog</title>
+    {% if not form.instance.pk %}
     Create Blog:
-
+    {% else %}
+    Update Blog
+    {% endif %}
     <form method="POST">
         {% csrf_token %}
         {{form.as_p}}

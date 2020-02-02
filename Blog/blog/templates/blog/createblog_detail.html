@@ -16,6 +16,11 @@
         <hr>
     {% endfor %}
 
+    {% if blog_detail.user == user %}
+    <a href="{% url 'blog:update_blog' pk=blog_detail.pk %}" class="btn btn-success" >Update</a>
+    <a href="{% url 'blog:delete_blog' pk=blog_detail.pk %}" class="btn btn-warning" >Remove</a>
+    {% else %}
     <a href="{% url 'blog:comment' pk=blog_detail.pk %}" class="btn btn-warning" >Comment</a>
+    {% endif %}
 
 {% endblock %}

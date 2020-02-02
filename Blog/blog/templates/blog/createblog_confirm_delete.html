@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+
+{% block body %}
+
+<h1>Remove {{blog_detail.title}}?</h1>
+<form method="POST">
+    {% csrf_token %}
+    <input class="btn btn-danger" type="submit" value="Delete" >
+    <a href="{% url 'index' %}" class="btn btn-success">Cancel</a>
+</form>
+
+{% endblock %}
